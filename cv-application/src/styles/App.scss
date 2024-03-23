@@ -1,0 +1,21 @@
+$background-color: #dedbdb;
+$cv-color: #ffffff;
+
+* {
+  //   outline: solid black;
+}
+
+body {
+  background-color: $background-color;
+}
+.main {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+}
+
+.cv-page {
+  background-color: white;
+  width: 95%;
+  min-height: 1000px;
+  margin: 2.5%;
+}
