@@ -1,29 +1,53 @@
 import "./styles/App.scss";
+import {
+  SectionPersonalInput,
+  SectionPersonalDisplay,
+} from "./SectionPersonal";
+import { useState } from "react";
 
 function App() {
+  const [personalDetails, setPersonalDetails] = useState({
+    fullName: "Joe Bloggs",
+    email: "example@example.com",
+    phoneNumber: "123-456-7890",
+    address: "London, UK",
+  });
+
   return (
     <div className="main">
-      <section className="edit-side">{EditSide()}</section>
-      <section className="cv-side">{CvSide()}</section>
+      <EditSide
+        personalDetails={personalDetails}
+        setPersonalDetails={setPersonalDetails}
+      />
+      <CvSide personalDetails={personalDetails} />
     </div>
   );
 }
 
-function EditSide() {
+function EditSide({ personalDetails, setPersonalDetails }) {
   return (
-    <>
-      <div className="personal-details"></div>
+    <section className="edit-side">
+      <div className="personal-details">
+        <SectionPersonalInput
+          personalDetails={personalDetails}
+          setPersonalDetails={setPersonalDetails}
+        />
+      </div>
       <div className="education"></div>
       <div className="experience"></div>
-    </>
+    </section>
   );
 }
 
-function CvSide() {
+function CvSide({ personalDetails }) {
   return (
-    <section className="cv-page">
-      <div className="cv-top"></div>
-      <div className="cv-body"></div>
+    <section className="cv-side">
+      <div className="cv-page">
+        <div className="cv-top">
+          <SectionPersonalDisplay personalDetails={personalDetails} />
+        </div>
+        <div className="cv-body"></div>
+      </div>
     </section>
   );
 }
