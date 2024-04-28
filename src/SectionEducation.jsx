@@ -1,15 +1,25 @@
 import { useState } from "react";
 
-export function SectionEducationInput({ educations, setEducation }) {
+export function SectionEducationInput({
+  educations,
+  setEducation,
+  addEducation,
+}) {
   const [showId, setShowId] = useState(null);
-  console.log(showId);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setEducation((prevEducations) => ({
-      ...prevEducations,
-      [name]: value,
-    }));
+
+    setEducation((prevEducations) => {
+      return prevEducations.map((education) => {
+        if (education.id === showId) {
+          return {
+            ...education,
+            [name]: value,
+          };
+        } else return education;
+      });
+    });
   };
 
   return (

@@ -22,13 +22,11 @@ function App() {
   const [educations, setEducation] = useState([
     {
       id: uuidv4(),
-      schoolName: "Example1",
-      experience: "experience2",
-    },
-    {
-      id: uuidv4(),
-      schoolName: "Example2",
-      experience: "experience1",
+      schoolName: "University College London",
+      degree: "Masters in Electronic and Electrical Engineering",
+      startDate: "2014",
+      endDate: "2018",
+      location: "London, UK",
     },
   ]);
 
@@ -44,6 +42,7 @@ function App() {
         setPersonalDetails={setPersonalDetails}
         educations={educations}
         setEducation={setEducation}
+        addEducation={addEducation}
       />
       <CvSide personalDetails={personalDetails} educations={educations} />
     </div>
@@ -55,6 +54,7 @@ function EditSide({
   setPersonalDetails,
   educations,
   setEducation,
+  addEducation,
 }) {
   return (
     <section className="edit-side">
@@ -68,6 +68,7 @@ function EditSide({
         <SectionEducationInput
           educations={educations}
           setEducation={setEducation}
+          addEducation={addEducation}
         />
       </div>
       <div className="experience"></div>
