@@ -2,14 +2,14 @@ import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 export function SectionEducationInput({ educations, setEducation }) {
-  const [showId, setShowId] = useState(null);
+  const [showEducationId, setShowEducationId] = useState(null);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
 
     setEducation((prevEducations) => {
       return prevEducations.map((education) => {
-        if (education.id === showId) {
+        if (education.id === showEducationId) {
           return {
             ...education,
             [name]: value,
@@ -48,7 +48,7 @@ export function SectionEducationInput({ educations, setEducation }) {
 
       {educations.map((education) => (
         <div className="education-input-entry" key={education.id}>
-          {showId === education.id ? (
+          {showEducationId === education.id ? (
             //html for show
             <div>
               <div>
@@ -107,13 +107,13 @@ export function SectionEducationInput({ educations, setEducation }) {
                 <button
                   className="save"
                   onClick={() => {
-                    setShowId(null);
+                    setShowEducationId(null);
                   }}
                 >
                   Save
                 </button>
                 <button
-                  className="save"
+                  className="delete"
                   onClick={() => {
                     removeEducation(education.id);
                   }}
@@ -129,7 +129,7 @@ export function SectionEducationInput({ educations, setEducation }) {
                 <div>{education.schoolName}</div>
                 <button
                   onClick={() => {
-                    setShowId(education.id); // Show when the button is clicked
+                    setShowEducationId(education.id); // Show when the button is clicked
                   }}
                 >
                   Edit

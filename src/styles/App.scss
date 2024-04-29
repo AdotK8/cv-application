@@ -196,11 +196,17 @@ html {
 }
 
 button {
-  background: $header-colour;
+  background: $button-colour;
   border: 1px solid $accent-colour;
   border-radius: 10px;
   padding: 10px;
   &:hover {
-    background: darken($color: $header-colour, $amount: 20%);
+    background: darken($color: $button-colour, $amount: 20%);
+  }
+  &.delete {
+    background-color: $delete-colour;
+    &:hover {
+      background: darken($color: $delete-colour, $amount: 20%);
+    }
   }
 }
