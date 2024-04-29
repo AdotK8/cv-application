@@ -30,7 +30,7 @@ html {
   background-color: $lightest-tone;
   border-radius: 20px;
   width: 95%;
-  padding: 2rem;
+  padding: 1rem 2rem;
   display: flex;
   flex-direction: column;
   box-shadow: 0 0 10px $shadow-colour;
@@ -53,6 +53,7 @@ html {
 }
 
 .education-input {
+  gap: 10px;
   background-color: $lightest-tone;
   border-radius: 20px;
   width: 95%;
@@ -60,12 +61,58 @@ html {
   display: flex;
   flex-direction: column;
   box-shadow: 0 0 10px $shadow-colour;
+
+  .education-input-entry {
+    > div {
+      > div:not(.dates):not(.edit-and-delete-container) {
+        display: flex;
+        flex-direction: column;
+        margin-top: 0.5rem;
+        > input {
+          all: initial;
+          background-color: $background-colour;
+          padding: 10px;
+          border: solid $background-colour 1px;
+          border-radius: 5px;
+          margin-top: 0.3rem;
+          margin-bottom: 0.3rem;
+          font-family: "Noto Sans", sans-serif;
+        }
+      }
+      .edit-and-delete-container {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        justify-content: end;
+      }
+      .dates {
+        display: flex;
+        justify-content: space-between;
+
+        > div {
+          display: flex;
+          flex-direction: column;
+
+          > input {
+            all: initial;
+            background-color: $background-colour;
+            padding: 10px;
+            border: solid $background-colour 1px;
+            border-radius: 5px;
+            margin-top: 0.3rem;
+            font-family: "Noto Sans", sans-serif;
+          }
+        }
+      }
+    }
+  }
 }
 
 .line {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  font-size: larger;
 }
 
 //css for cv side
@@ -118,4 +165,42 @@ html {
   vertical-align: bottom;
   display: inline-block;
   font-weight: 700;
+}
+
+.cv-body {
+  padding: 10px 50px;
+  .section-header {
+    background-color: $header-colour;
+    text-align: center;
+    padding: 2px;
+  }
+  .education-entry {
+    display: flex;
+    gap: 50px;
+    margin-bottom: 20px;
+    .leftHand {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .rightHand {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      .school {
+        font-size: larger;
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+button {
+  background: $header-colour;
+  border: 1px solid $accent-colour;
+  border-radius: 10px;
+  padding: 10px;
+  &:hover {
+    background: darken($color: $header-colour, $amount: 20%);
+  }
 }

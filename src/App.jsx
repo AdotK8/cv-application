@@ -12,12 +12,15 @@ import {
 import { useState } from "react";
 
 function App() {
+  //initise perosnal details array
   const [personalDetails, setPersonalDetails] = useState({
     fullName: "Joe Bloggs",
     email: "example@example.com",
     phoneNumber: "123-456-7890",
     address: "London, UK",
   });
+
+  //initialise educations arrary
 
   const [educations, setEducation] = useState([
     {
@@ -30,11 +33,6 @@ function App() {
     },
   ]);
 
-  const addEducation = (schoolName) => {
-    const newEducation = { id: uuidv4(), schoolName: schoolName };
-    setEducation([...educations, newEducation]);
-  };
-
   return (
     <div className="main">
       <EditSide
@@ -42,7 +40,6 @@ function App() {
         setPersonalDetails={setPersonalDetails}
         educations={educations}
         setEducation={setEducation}
-        addEducation={addEducation}
       />
       <CvSide personalDetails={personalDetails} educations={educations} />
     </div>
@@ -54,7 +51,6 @@ function EditSide({
   setPersonalDetails,
   educations,
   setEducation,
-  addEducation,
 }) {
   return (
     <section className="edit-side">
@@ -68,7 +64,6 @@ function EditSide({
         <SectionEducationInput
           educations={educations}
           setEducation={setEducation}
-          addEducation={addEducation}
         />
       </div>
       <div className="experience"></div>

@@ -1,10 +1,7 @@
 import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
-export function SectionEducationInput({
-  educations,
-  setEducation,
-  addEducation,
-}) {
+export function SectionEducationInput({ educations, setEducation }) {
   const [showId, setShowId] = useState(null);
 
   const handleChange = (event) => {
@@ -22,48 +19,134 @@ export function SectionEducationInput({
     });
   };
 
+  const addEducation = (
+    schoolName = "London City University",
+    degree = "Bachelors in Mathematics",
+    startDate = "2018",
+    endDate = "2021",
+    location = "London, UK"
+  ) => {
+    const newEducation = {
+      id: uuidv4(),
+      schoolName: schoolName,
+      degree: degree,
+      startDate: startDate,
+      endDate: endDate,
+      location: location,
+    };
+    setEducation([...educations, newEducation]);
+  };
+
+  const removeEducation = (id) => {
+    const newEducations = educations.filter((education) => education.id !== id);
+    setEducation(newEducations);
+  };
+
   return (
-    <div>
+    <>
       <h1>Education Details</h1>
 
       {educations.map((education) => (
-        <div key={education.id}>
+        <div className="education-input-entry" key={education.id}>
           {showId === education.id ? (
             //html for show
             <div>
-              <Input
-                label="School Name:"
-                name="schoolName"
-                className="input-field"
-                defaultValue={education.schoolName}
-                onChange={handleChange}
-                placeholder="First and Last name"
-              />
-              <div>Education details...</div>{" "}
-              <button
-                onClick={() => {
-                  setShowId(null);
-                }}
-              >
-                v
-              </button>
+              <div>
+                <Input
+                  label="School:"
+                  name="schoolName"
+                  className="input-field"
+                  defaultValue={education.schoolName}
+                  onChange={handleChange}
+                  placeholder="Name of School"
+                />
+              </div>
+              <div>
+                <Input
+                  label="Degree:"
+                  name="degree"
+                  className="input-field"
+                  defaultValue={education.degree}
+                  onChange={handleChange}
+                  placeholder="Name of Degree"
+                />
+              </div>
+              <div className="dates">
+                <div>
+                  <Input
+                    label="Start Date:"
+                    name="startDate"
+                    className="input-field"
+                    defaultValue={education.startDate}
+                    onChange={handleChange}
+                    placeholder="Start Date"
+                  />
+                </div>
+                <div>
+                  <Input
+                    label="End Date:"
+                    name="endDate"
+                    className="input-field"
+                    defaultValue={education.endDate}
+                    onChange={handleChange}
+                    placeholder="End Date"
+                  />
+                </div>
+              </div>
+              <div>
+                <Input
+                  label="Location:"
+                  name="location"
+                  className="input-field"
+                  defaultValue={education.location}
+                  onChange={handleChange}
+                  placeholder="Enter Location"
+                />
+              </div>
+              <div className="edit-and-delete-container">
+                <button
+                  className="save"
+                  onClick={() => {
+                    setShowId(null);
+                  }}
+                >
+                  Save
+                </button>
+                <button
+                  className="save"
+                  onClick={() => {
+                    removeEducation(education.id);
+                  }}
+                >
+                  Delete
+                </button>
+              </div>
             </div>
           ) : (
             //html for no show
-            <div className="line">
-              <div>{education.schoolName}</div>
-              <button
-                onClick={() => {
-                  setShowId(education.id); // Show when the button is clicked
-                }}
-              >
-                ^
-              </button>
-            </div>
+            <>
+              <div className="line">
+                <div>{education.schoolName}</div>
+                <button
+                  onClick={() => {
+                    setShowId(education.id); // Show when the button is clicked
+                  }}
+                >
+                  Edit
+                </button>
+              </div>
+            </>
           )}
         </div>
       ))}
-    </div>
+      <button
+        onClick={() => {
+          addEducation();
+        }}
+      >
+        Add Education
+      </button>
+    </>
   );
 }
 
@@ -93,10 +176,21 @@ function Input({
 
 export function SectionEducationDisplay({ educations }) {
   return (
-    <div>
+    <>
+      <h1 className="section-header">Education</h1>
+
       {educations.map((education) => (
-        <div key={education.id}>{education.schoolName}</div>
+        <div className="education-entry" key={education.id}>
+          <div className="leftHand">
+            <div>{`${education.startDate} - ${education.endDate}`}</div>
+            <div>{education.location}</div>
+          </div>
+          <div className="rightHand">
+            <div className="school">{education.schoolName}</div>
+            <div>{education.degree}</div>
+          </div>
+        </div>
       ))}
-    </div>
+    </>
   );
 }
