@@ -36,18 +36,20 @@ html {
   box-shadow: 0 0 10px $shadow-colour;
 
   > div {
-    display: flex;
-    flex-direction: column;
-    margin-top: 0.5rem;
+    > div {
+      display: flex;
+      flex-direction: column;
+      margin-top: 0.5rem;
 
-    > input {
-      all: initial;
-      background-color: $background-colour;
-      padding: 10px;
-      border: solid $background-colour 1px;
-      border-radius: 5px;
-      margin-top: 0.3rem;
-      font-family: "Noto Sans", sans-serif;
+      > input {
+        all: initial;
+        background-color: $background-colour;
+        padding: 10px;
+        border: solid $background-colour 1px;
+        border-radius: 5px;
+        margin-top: 0.3rem;
+        font-family: "Noto Sans", sans-serif;
+      }
     }
   }
 }
@@ -175,7 +177,8 @@ html {
     padding: 2px;
   }
   .education-entry {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
     gap: 50px;
     margin-bottom: 20px;
     .leftHand {
@@ -208,5 +211,9 @@ button {
     &:hover {
       background: darken($color: $delete-colour, $amount: 20%);
     }
+  }
+  &.close {
+    width: 100%;
+    margin-top: 10px;
   }
 }

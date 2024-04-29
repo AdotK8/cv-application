@@ -2,8 +2,10 @@ import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 export function SectionEducationInput({ educations, setEducation }) {
+  //initialise state variable to show and hide edit detais
   const [showEducationId, setShowEducationId] = useState(null);
 
+  //handle any change to variables and update educations array
   const handleChange = (event) => {
     const { name, value } = event.target;
 
@@ -19,6 +21,7 @@ export function SectionEducationInput({ educations, setEducation }) {
     });
   };
 
+  //handle adding of new education entries to array
   const addEducation = (
     schoolName = "London City University",
     degree = "Bachelors in Mathematics",
@@ -37,6 +40,7 @@ export function SectionEducationInput({ educations, setEducation }) {
     setEducation([...educations, newEducation]);
   };
 
+  //handle removing of education entries
   const removeEducation = (id) => {
     const newEducations = educations.filter((education) => education.id !== id);
     setEducation(newEducations);
@@ -150,6 +154,27 @@ export function SectionEducationInput({ educations, setEducation }) {
   );
 }
 
+export function SectionEducationDisplay({ educations }) {
+  return (
+    <>
+      <h1 className="section-header">Education</h1>
+
+      {educations.map((education) => (
+        <div className="education-entry" key={education.id}>
+          <div className="leftHand">
+            <div>{`${education.startDate} - ${education.endDate}`}</div>
+            <div>{education.location}</div>
+          </div>
+          <div className="rightHand">
+            <div className="school">{education.schoolName}</div>
+            <div>{education.degree}</div>
+          </div>
+        </div>
+      ))}
+    </>
+  );
+}
+
 function Input({
   label,
   type = "text",
@@ -170,27 +195,6 @@ function Input({
         defaultValue={defaultValue}
         onChange={onChange}
       />
-    </>
-  );
-}
-
-export function SectionEducationDisplay({ educations }) {
-  return (
-    <>
-      <h1 className="section-header">Education</h1>
-
-      {educations.map((education) => (
-        <div className="education-entry" key={education.id}>
-          <div className="leftHand">
-            <div>{`${education.startDate} - ${education.endDate}`}</div>
-            <div>{education.location}</div>
-          </div>
-          <div className="rightHand">
-            <div className="school">{education.schoolName}</div>
-            <div>{education.degree}</div>
-          </div>
-        </div>
-      ))}
     </>
   );
 }
