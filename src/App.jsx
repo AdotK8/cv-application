@@ -78,9 +78,13 @@ function App() {
         educations={educations}
         setEducation={setEducation}
         experiences={experiences}
-        setExperiences={setExperience}
+        setExperience={setExperience}
       />
-      <CvSide personalDetails={personalDetails} educations={educations} />
+      <CvSide
+        personalDetails={personalDetails}
+        educations={educations}
+        experiences={experiences}
+      />
     </div>
   );
 }

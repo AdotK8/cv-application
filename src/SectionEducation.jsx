@@ -107,6 +107,7 @@ export function SectionEducationInput({ educations, setEducation }) {
                   placeholder="Enter Location"
                 />
               </div>
+
               <div className="edit-and-delete-container">
                 <button
                   className="save"
