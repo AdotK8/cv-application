@@ -2,6 +2,7 @@ import emailIcon from "./assets/email.svg";
 import mapIcon from "./assets/map-marker.svg";
 import phoneIcon from "./assets/phone.svg";
 import { useState } from "react";
+import Input from "./Input";
 
 export function SectionPersonalInput({ personalDetails, setPersonalDetails }) {
   const [showDetails, setShowDetails] = useState(false);
@@ -74,30 +75,6 @@ export function SectionPersonalInput({ personalDetails, setPersonalDetails }) {
           {/* Button to toggle back */}
         </div>
       )}
-    </>
-  );
-}
-
-function Input({
-  label,
-  type = "text",
-  name,
-  className,
-  defaultValue,
-  onChange,
-  placeholder,
-}) {
-  return (
-    <>
-      <label>{label}</label>
-      <input
-        type={type}
-        placeholder={placeholder}
-        name={name}
-        className={className}
-        defaultValue={defaultValue}
-        onChange={onChange}
-      />
     </>
   );
 }

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import Input from "./Input";
 
 export function SectionExperienceInput({ experiences, setExperience }) {
   //initialise state variable to show and hide edit detais
@@ -186,42 +187,6 @@ export function SectionExperienceDisplay({ experiences }) {
           </div>
         </div>
       ))}
-    </>
-  );
-}
-
-function Input({
-  label,
-  type = "text",
-  name,
-  className,
-  defaultValue,
-  onChange,
-  placeholder,
-  isTextarea = false,
-}) {
-  return (
-    <>
-      <label>{label}</label>
-      {isTextarea ? (
-        <textarea
-          name={name}
-          className={className}
-          defaultValue={defaultValue}
-          onChange={onChange}
-          placeholder={placeholder}
-          rows={5}
-        />
-      ) : (
-        <input
-          type={type}
-          placeholder={placeholder}
-          name={name}
-          className={className}
-          defaultValue={defaultValue}
-          onChange={onChange}
-        />
-      )}
     </>
   );
 }

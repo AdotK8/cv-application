@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import Input from "./Input";
 
 export function SectionEducationInput({ educations, setEducation }) {
   //initialise state variable to show and hide edit detais
@@ -172,30 +173,6 @@ export function SectionEducationDisplay({ educations }) {
           </div>
         </div>
       ))}
-    </>
-  );
-}
-
-function Input({
-  label,
-  type = "text",
-  name,
-  className,
-  defaultValue,
-  onChange,
-  placeholder,
-}) {
-  return (
-    <>
-      <label>{label}</label>
-      <input
-        type={type}
-        placeholder={placeholder}
-        name={name}
-        className={className}
-        defaultValue={defaultValue}
-        onChange={onChange}
-      />
     </>
   );
 }
