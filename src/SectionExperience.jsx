@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import Input from "./Input";
+import jobIcon from "./assets/briefcase.svg";
 
 export function SectionExperienceInput({ experiences, setExperience }) {
   //initialise state variable to show and hide edit detais
@@ -50,7 +51,10 @@ export function SectionExperienceInput({ experiences, setExperience }) {
   };
   return (
     <>
-      <h1>Experience Details</h1>
+      <div className="header">
+        <img className="icon-sectional" src={jobIcon} />
+        <h1>Experience Details</h1>
+      </div>
 
       {experiences.map((experience) => (
         <div className="experience-input-entry" key={experience.id}>
@@ -158,6 +162,7 @@ export function SectionExperienceInput({ experiences, setExperience }) {
         </div>
       ))}
       <button
+        className="bottom-button"
         onClick={() => {
           addExperience();
         }}

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import Input from "./Input";
+import schoolIcon from "./assets/school.svg";
 
 export function SectionEducationInput({ educations, setEducation }) {
   //initialise state variable to show and hide edit detais
@@ -49,7 +50,10 @@ export function SectionEducationInput({ educations, setEducation }) {
 
   return (
     <>
-      <h1>Education Details</h1>
+      <div className="header">
+        <img className="icon-sectional" src={schoolIcon} />
+        <h1>Education Details</h1>
+      </div>
 
       {educations.map((education) => (
         <div className="education-input-entry" key={education.id}>
@@ -146,6 +150,7 @@ export function SectionEducationInput({ educations, setEducation }) {
         </div>
       ))}
       <button
+        className="bottom-button"
         onClick={() => {
           addEducation();
         }}

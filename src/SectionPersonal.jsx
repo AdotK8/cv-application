@@ -1,5 +1,8 @@
 import emailIcon from "./assets/email.svg";
 import mapIcon from "./assets/map-marker.svg";
+import userIcon from "./assets/account.svg";
+import jobIcon from "./assets/briefcase.svg";
+
 import phoneIcon from "./assets/phone.svg";
 import { useState } from "react";
 import Input from "./Input";
@@ -21,9 +24,15 @@ export function SectionPersonalInput({ personalDetails, setPersonalDetails }) {
 
   return (
     <>
-      <h1>Personal Details</h1>
+      <div className="header">
+        <img className="icon-sectional" src={userIcon} />
+        <h1>Personal Details</h1>
+      </div>
+
       {!showDetails && (
-        <button onClick={handleToggle}>Edit</button> // This button toggles the state to show the form
+        <button className="bottom-button" onClick={handleToggle}>
+          Expand
+        </button>
       )}
       {showDetails && (
         <div>
@@ -69,7 +78,7 @@ export function SectionPersonalInput({ personalDetails, setPersonalDetails }) {
               placeholder="City, Country"
             />
           </div>
-          <button className="close" onClick={handleToggle}>
+          <button className="bottom-button close" onClick={handleToggle}>
             Close
           </button>{" "}
           {/* Button to toggle back */}
