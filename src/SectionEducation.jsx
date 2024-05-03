@@ -155,7 +155,7 @@ export function SectionEducationInput({ educations, setEducation }) {
           addEducation();
         }}
       >
-        Add Education
+        <span>+</span> Add Education
       </button>
     </>
   );

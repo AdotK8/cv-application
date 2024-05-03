@@ -167,7 +167,7 @@ export function SectionExperienceInput({ experiences, setExperience }) {
           addExperience();
         }}
       >
-        Add Experience
+        <span>+</span> Add Experience
       </button>
     </>
   );
