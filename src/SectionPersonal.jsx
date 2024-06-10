@@ -8,6 +8,7 @@ import { useState } from "react";
 import Input from "./Input";
 
 export function SectionPersonalInput({ personalDetails, setPersonalDetails }) {
+  //initialise state variable to show and hide edit fields
   const [showDetails, setShowDetails] = useState(false);
 
   const handleChange = (event) => {
@@ -81,7 +82,6 @@ export function SectionPersonalInput({ personalDetails, setPersonalDetails }) {
           <button className="bottom-button close" onClick={handleToggle}>
             Close
           </button>{" "}
-          {/* Button to toggle back */}
         </div>
       )}
     </>

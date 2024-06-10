@@ -4,7 +4,7 @@ import Input from "./Input";
 import jobIcon from "./assets/briefcase.svg";
 
 export function SectionExperienceInput({ experiences, setExperience }) {
-  //initialise state variable to show and hide edit detais
+  //initialise state variable to show and hide edit fields
   const [showExpId, setShowExpId] = useState(null);
 
   const handleChange = (event) => {
@@ -21,8 +21,8 @@ export function SectionExperienceInput({ experiences, setExperience }) {
     });
   };
 
-  //handle adding of new experience entries to array
   const addExperience = (
+    //handle adding of new experience entries to array
     companyName = "Example Experience",
     positionTitle = "Example Position",
     startDate = "Date",
@@ -42,8 +42,8 @@ export function SectionExperienceInput({ experiences, setExperience }) {
     setExperience([...experiences, newExperience]);
   };
 
-  //handle removing of experience entries
   const removeExperience = (id) => {
+    //handle removing of experience entries
     const newExperiences = experiences.filter(
       (experience) => experience.id !== id
     );
@@ -132,7 +132,7 @@ export function SectionExperienceInput({ experiences, setExperience }) {
                     setShowExpId(null);
                   }}
                 >
-                  Save
+                  Close
                 </button>
                 <button
                   className="delete"
@@ -151,7 +151,7 @@ export function SectionExperienceInput({ experiences, setExperience }) {
                 <div>{experience.companyName}</div>
                 <button
                   onClick={() => {
-                    setShowExpId(experience.id); // Show when the button is clicked
+                    setShowExpId(experience.id);
                   }}
                 >
                   Edit

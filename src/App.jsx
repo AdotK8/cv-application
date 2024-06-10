@@ -16,16 +16,16 @@ import {
 import { useState } from "react";
 
 function App() {
-  //initise perosnal details array
   const [personalDetails, setPersonalDetails] = useState({
+    //initise perosnal details array with default values
     fullName: "Joe Bloggs",
     email: "example@example.com",
     phoneNumber: "123-456-7890",
     address: "London, UK",
   });
 
-  //initialise educations arrary
   const [educations, setEducation] = useState([
+    //initialise educations arrary with default values
     {
       id: uuidv4(),
       schoolName: "University College London",
@@ -44,9 +44,8 @@ function App() {
     },
   ]);
 
-  //initialise Experience arrary
-
   const [experiences, setExperience] = useState([
+    //initialise Experience arrary with default values
     {
       id: uuidv4(),
       companyName: "Umbrella Inc",
@@ -69,7 +68,6 @@ function App() {
     },
   ]);
 
-  //return App layout
   return (
     <div className="main">
       <EditSide

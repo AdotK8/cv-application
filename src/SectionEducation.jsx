@@ -4,7 +4,7 @@ import Input from "./Input";
 import schoolIcon from "./assets/school.svg";
 
 export function SectionEducationInput({ educations, setEducation }) {
-  //initialise state variable to show and hide edit detais
+  //initialise state variable to show and hide edit fields
   const [showEducationId, setShowEducationId] = useState(null);
 
   //handle any change to variables and update educations array
@@ -23,8 +23,8 @@ export function SectionEducationInput({ educations, setEducation }) {
     });
   };
 
-  //handle adding of new education entries to array
   const addEducation = (
+    //handle adding of new education entries to array
     schoolName = "London City University",
     degree = "Bachelors in Mathematics",
     startDate = "2018",
@@ -42,8 +42,8 @@ export function SectionEducationInput({ educations, setEducation }) {
     setEducation([...educations, newEducation]);
   };
 
-  //handle removing of education entries
   const removeEducation = (id) => {
+    //handle removing of education entries
     const newEducations = educations.filter((education) => education.id !== id);
     setEducation(newEducations);
   };
@@ -120,7 +120,7 @@ export function SectionEducationInput({ educations, setEducation }) {
                     setShowEducationId(null);
                   }}
                 >
-                  Save
+                  Close
                 </button>
                 <button
                   className="delete"
@@ -139,7 +139,7 @@ export function SectionEducationInput({ educations, setEducation }) {
                 <div>{education.schoolName}</div>
                 <button
                   onClick={() => {
-                    setShowEducationId(education.id); // Show when the button is clicked
+                    setShowEducationId(education.id);
                   }}
                 >
                   Edit
